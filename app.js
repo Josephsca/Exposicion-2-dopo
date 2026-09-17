@@ -88,6 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update URL hash without jump
     history.replaceState(null, null, `#slide-${currentSlide}`);
+
+    // Scroll slide to top on mobile
+    const currentSlideEl = document.getElementById(`slide-${currentSlide}`);
+    if (currentSlideEl) {
+      currentSlideEl.scrollTop = 0;
+    }
   };
 
   window.nextSlide = function() {
@@ -226,24 +232,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Touch Navigation (Swiping on mobile/tablets)
+  // Touch Navigation (Distinguish horizontal swipe from vertical scroll)
+  let touchStartY = 0;
+  let touchEndY = 0;
+
   document.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
   }, { passive: true });
 
   document.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
     handleSwipe();
   }, { passive: true });
 
   function handleSwipe() {
     if (isSummaryMode) return;
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      nextSlide();
-    }
-    if (touchEndX > touchStartX + swipeThreshold) {
-      prevSlide();
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    // Dominant horizontal swipe: must move at least 60px and 1.8x more horizontally than vertically
+    if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.8) {
+      if (deltaX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
     }
   }
 
