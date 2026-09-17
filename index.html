@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agreed Coding Standards | XP en DOPO</title>
+  <meta name="description" content="Contexto, propuesta, uso y aplicación en Desarrollo Orientado por Objetos de la regla Agreed Standards de Extreme Programming.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="deck-mode">
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Barra Superior -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-brand">
+      <span class="badge-xp">XP • CODING</span>
+      <span class="nav-topic">Agreed Standards</span>
+    </div>
+
+    <div class="nav-controls">
+      <button id="viewToggleBtn" class="nav-btn" title="Alternar vista">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span class="btn-text">Modo Lectura</span>
+      </button>
+
+      <button id="notesToggleBtn" class="nav-btn" title="Notas del orador (N)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span class="btn-text">Notas (N)</span>
+      </button>
+
+      <button id="fullscreenBtn" class="nav-btn" title="Pantalla completa (F)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Barra de Progreso -->
+  <div class="deck-progress-track">
+    <div class="deck-progress-bar" id="progressBar"></div>
+  </div>
+
+  <main class="presentation-wrapper" id="presentation">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide active" id="slide-1" data-slide="1">
+      <div class="slide-content hero-layout">
+        <div class="hero-tag">Desarrollo Orientado por Objetos • XP</div>
+        <h1 class="hero-title">
+          «Code must be written to <span class="highlight-gradient">agreed standards</span>»
+        </h1>
+        <p class="hero-subtitle">
+          El acuerdo sobre estándares de código como cimiento de la disciplina ágil y el diseño de objetos.
+        </p>
+
+        <div class="presenters-badge">
+          <span class="presenter-icon">🎙️</span> Presentación a cargo de: <strong>Juan Camilo Álvarez</strong> & <strong>Joseph Cañón</strong>
+        </div>
+
+        <div class="hero-agenda-grid">
+          <div class="agenda-pill">1. Contexto General</div>
+          <div class="agenda-pill">2. Qué Propone</div>
+          <div class="agenda-pill">3. Para Qué se Utiliza</div>
+          <div class="agenda-pill">4. Uso en DOPO</div>
+        </div>
+
+        <div class="hero-hint">
+          <span>Navegá con <kbd>→</kbd> <kbd>←</kbd> o <kbd>Espacio</kbd></span>
+        </div>
+      </div>
+      <aside class="speaker-note-source">
+        <strong>Punto de apertura (Juan Camilo & Joseph):</strong> Saluden y presenten la tesis central: Extreme Programming postula que si un equipo no acuerda de entrada cómo escribir el código, pasan más tiempo peleando con dialectos individuales que resolviendo problemas del negocio.
+      </aside>
+    </section>
+
+    <!-- SLIDE 2: CONTEXTO GENERAL DE LA PRÁCTICA -->
+    <section class="slide" id="slide-2" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label">01 • Fundamento & Analogía</div>
+        <h2 class="slide-title">Contexto general de la práctica</h2>
+        <p class="slide-description">
+          ¿De dónde surge y en qué parte del flujo de Extreme Programming (XP) habita esta regla?
+        </p>
+
+        <div class="two-col-grid">
+          <div class="info-box">
+            <div class="info-icon">📍</div>
+            <h3>Fase: «Coding» en XP</h3>
+            <p>
+              XP estructura su ciclo en 5 fases: <em>Planning, Managing, Designing, Coding y Testing</em>.
+            </p>
+            <p class="mt-sm">
+              Esta regla vive en el corazón de <strong>Coding</strong>, actuando como la base operativa que permite que varias personas trabajen sobre el mismo código sin pisarse ni friccionar.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <div class="info-icon">⚡</div>
+            <h3>¿Por qué surge la necesidad?</h3>
+            <p>
+              En equipos ágiles el código cambia a diario. Cuando cada programador aplica su propio dialecto:
+            </p>
+            <ul class="clean-bullet-list">
+              <li>El código se fragmenta en "islas de propiedad individual".</li>
+              <li>La lectura se vuelve costosa y lenta.</li>
+              <li>Aparecen guerras de estilo subjetivas en lugar de discusiones de arquitectura.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Analogía de la Obra en Construcción -->
+        <div class="analogy-card">
+          <div class="analogy-header">
+            <span class="analogy-icon">🏗️</span>
+            <div>
+              <h4 class="analogy-title">La Analogía: La Obra en Construcción</h4>
+              <span class="analogy-subtitle">Comprendiendo el impacto del estándar</span>
+            </div>
+          </div>
+          <p class="analogy-text">
+            Si en una obra cada electricista usa cables de distinto color y tornillos con medidas incompatibles (pulgadas vs. centímetros), cada habitación funcionará por separado, pero <strong>nadie se animará a tocar los cables del compañero</strong> por miedo a electrocutarse, y conectar los pisos será un caos.
+          </p>
+          <div class="analogy-takeaway">
+            💡 <strong>El estándar acordado no te dice qué casa diseñar:</strong> te asegura que todos usemos el mismo calibre y las mismas medidas para que cualquiera pueda continuar la pared sin tirarla abajo.
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note-source">
+        <strong>Punto para la exposición:</strong>
+        Usen la analogía de la obra: "Imagínense una obra donde cada albañil mide en una unidad distinta". Muestren que el estándar no mata la creatividad arquitectónica, sino que da el sistema métrico común para que el equipo pueda construir en conjunto.
+      </aside>
+    </section>
+
+    <!-- SLIDE 3: QUÉ PROPONE -->
+    <section class="slide" id="slide-3" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label">02 • Definición</div>
+        <h2 class="slide-title">¿Qué propone la regla?</h2>
+        
+        <div class="quote-card">
+          <p>
+            «El equipo completo escribe el código bajo acuerdos construidos en conjunto —nunca impuestos por una sola persona— sobre nombres, formato, estructura y estilo.»
+          </p>
+        </div>
+
+        <p class="slide-description">
+          No propone manuales rígidos de 100 páginas, sino un <strong>ciclo de 4 pasos</strong>:
+        </p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-title">Discutir</div>
+            <p class="step-text">El equipo propone y debate convenciones democráticamente.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-title">Documentar</div>
+            <p class="step-text">Guía de estilo corta, práctica y accesible en el repositorio.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-title">Automatizar</div>
+            <p class="step-text">Linters y formatters (Prettier, Checkstyle, ESLint) lo hacen cumplir.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-title">Revisar</div>
+            <p class="step-text">Ajuste y evolución continua en retrospectivas y code reviews.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note-source">
+        <strong>Puntos clave para decir:</strong>
+        Enfocate en que es un "acuerdo", no una dictadura. Y que la clave moderna es el paso 3: si se puede automatizar con un linter, no se pierde tiempo humano discutiéndolo.
+      </aside>
+    </section>
+
+    <!-- SLIDE 4: PARA QUÉ SE UTILIZA -->
+    <section class="slide" id="slide-4" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label">03 • Utilidad y Beneficios</div>
+        <h2 class="slide-title">¿Para qué se utiliza?</h2>
+        <p class="slide-description">
+          Se utiliza como el habilitador indispensable para que funcionen las demás prácticas técnicas de XP:
+        </p>
+
+        <div class="synergy-grid">
+          <div class="synergy-card">
+            <div class="synergy-header">
+              <div class="synergy-icon">👥</div>
+              <div>
+                <h3>Pair Programming</h3>
+                <span class="synergy-sub">Cero fricción en vivo</span>
+              </div>
+            </div>
+            <p>
+              Evita debates estériles de formato durante la sesión. La pareja se enfoca 100% en la lógica y el modelado.
+            </p>
+          </div>
+
+          <div class="synergy-card">
+            <div class="synergy-header">
+              <div class="synergy-icon">🔄</div>
+              <div>
+                <h3>Collective Ownership</h3>
+                <span class="synergy-sub">Legibilidad inmediata</span>
+              </div>
+            </div>
+            <p>
+              Cualquiera puede modificar cualquier archivo sin necesidad de "traducir" mentalmente el estilo del autor original.
+            </p>
+          </div>
+
+          <div class="synergy-card">
+            <div class="synergy-header">
+              <div class="synergy-icon">⚡</div>
+              <div>
+                <h3>Continuous Integration</h3>
+                <span class="synergy-sub">Diffs limpios en Git</span>
+              </div>
+            </div>
+            <p>
+              Evita que un cambio de 1 línea de negocio arrastre 80 líneas de reformateo accidental y genere merge conflicts.
+            </p>
+          </div>
+
+          <div class="synergy-card">
+            <div class="synergy-header">
+              <div class="synergy-icon">🧪</div>
+              <div>
+                <h3>Test-Driven Development (TDD)</h3>
+                <span class="synergy-sub">Especificación viva</span>
+              </div>
+            </div>
+            <p>
+              Garantiza pruebas estructuradas bajo un mismo patrón (ej. <em>Given-When-Then</em>), convirtiéndolas en documentación real.
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note-source">
+        <strong>Puntos clave para decir:</strong>
+        Mostrá el efecto dominó: si quitás el estándar acordado, Collective Ownership se cae (la gente dice "no toco ese módulo porque no lo entiendo"), y CI se llena de merge conflicts por tabulaciones.
+      </aside>
+    </section>
+
+    <!-- SLIDE 5: CÓMO LA USARÍA EN DOPO -->
+    <section class="slide" id="slide-5" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label">04 • Aplicación Práctica</div>
+        <h2 class="slide-title">¿Cómo la usaría en Desarrollo Orientado por Objetos?</h2>
+        <p class="slide-description">
+          En DOPO el estándar trasciende los espacios y comas: se convierte en un <strong>acuerdo de diseño orientado a objetos</strong>.
+        </p>
+
+        <div class="oo-pillars-grid">
+          <div class="oo-card">
+            <div class="oo-icon">🏛️</div>
+            <h3>Vocabulario y Nombres de Dominio</h3>
+            <p>
+              Acordar clases como <strong>sustantivos</strong> que representen conceptos del negocio (ej. <code>OrderValidator</code>, no <code>OrderHelperDataThing</code>).
+            </p>
+          </div>
+
+          <div class="oo-card">
+            <div class="oo-icon">🎯</div>
+            <h3>Principio «Tell, Don't Ask»</h3>
+            <p>
+              Estandarizar métodos que ordenan acciones (<code>account.debit(amount)</code>) en vez de exponer datos con getters y setters anémicos.
+            </p>
+          </div>
+
+          <div class="oo-card">
+            <div class="oo-icon">🛡️</div>
+            <h3>Límites de Responsabilidad</h3>
+            <p>
+              Acuerdos objetivos: clases con responsabilidad única (SRP), constructores con máximo 3-4 parámetros y métodos breves y legibles.
+            </p>
+          </div>
+        </div>
+
+        <div class="oo-quote-footer">
+          "En DOPO, acordar estándares significa hablar el mismo lenguaje de diseño para que los objetos colaboren con claridad."
+        </div>
+      </div>
+      <aside class="speaker-note-source">
+        <strong>Puntos clave para cerrar (DOPO):</strong>
+        Este es el remate de su exposición. Concluyan que en objetos, el estándar define cómo se nombran las clases, cómo se encapsula el estado (Tell, Don't Ask) y cómo se evita el código espagueti.
+      </aside>
+    </section>
+
+    <!-- SLIDE 6: AGRADECIMIENTO & QR -->
+    <section class="slide" id="slide-6" data-slide="6">
+      <div class="slide-content thanks-layout">
+        <div class="section-label">05 • Cierre & Recursos</div>
+        <h2 class="slide-title">¡Muchas Gracias!</h2>
+        <p class="slide-description">
+          Espacio abierto para preguntas, dudas o comentarios.
+        </p>
+
+        <div class="thanks-grid">
+          <!-- Columna izquierda: Resumen & Autores -->
+          <div class="thanks-info-card">
+            <h3>Conclusiones Clave</h3>
+            <ul class="clean-bullet-list">
+              <li>El estándar es un <strong>contrato de equipo</strong>, no una imposición.</li>
+              <li>Sostiene el ritmo ágil de <strong>Pair Programming, CI y TDD</strong>.</li>
+              <li>En <strong>DOPO</strong>, garantiza que los objetos hablen el mismo lenguaje de diseño.</li>
+            </ul>
+
+            <div class="thanks-presenters">
+              <span class="meta-label">Expositores</span>
+              <p><strong>Juan Camilo Álvarez</strong> & <strong>Joseph Cañón</strong></p>
+              <a href="https://github.com/Josephsca/Exposicion-2-dopo" target="_blank" rel="noopener noreferrer" class="repo-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>Ver repositorio en GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Columna derecha: Código QR -->
+          <div class="qr-container-card">
+            <div class="qr-image-wrapper">
+              <img src="qr-repo.png" alt="Código QR al Repositorio GitHub" class="qr-code-img" width="220" height="220">
+            </div>
+            <div class="qr-caption">
+              <strong>Escaneá con tu celular</strong>
+              <span>Para acceder a la presentación y al código fuente</span>
+              <code class="qr-url">Josephsca/Exposicion-2-dopo</code>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note-source">
+        <strong>Punto de cierre:</strong>
+        Agradezcan al profesor y a la clase. Inviten a hacer preguntas y señalen el código QR para que cualquier compañero pueda escanearlo y repasar el contenido o clonar el repositorio.
+      </aside>
+    </section>
+
+  </main>
+
+  <!-- Controles Inferiores -->
+  <footer class="deck-footer" id="deckFooter">
+    <div class="deck-controls">
+      <button class="nav-arrow-btn" id="prevBtn" onclick="prevSlide()" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <div class="slide-indicators" id="slideIndicators"></div>
+
+      <button class="nav-arrow-btn" id="nextBtn" onclick="nextSlide()" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <div class="slide-counter-badge" id="slideCounter">
+      1 / 6
+    </div>
+  </footer>
+
+  <!-- Modal de Notas del Orador -->
+  <div class="notes-modal" id="notesModal">
+    <div class="notes-modal-header">
+      <div class="notes-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Notas para tu Exposición (Diapositiva <span id="notesSlideNumber">1</span>)
+      </div>
+      <button class="notes-close-btn" onclick="toggleNotes()">✕</button>
+    </div>
+    <div class="notes-body" id="notesBody"></div>
+    <div class="notes-footer">
+      Presioná <kbd>N</kbd> para abrir/cerrar estas notas mientras exponés.
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
