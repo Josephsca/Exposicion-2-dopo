@@ -1257,139 +1257,89 @@ kbd {
 }
 
 /* ==========================================================================
-   SLIDE 6: AGRADECIMIENTO & QR STYLES
+   SLIDE 6: CLOSING & CONCLUSION CARD (PC CENTERED)
    ========================================================================== */
-.thanks-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 2rem;
-  align-items: center;
-  margin-top: 1.5rem;
-}
-
-.thanks-info-card {
+.closing-summary-card {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 2rem;
-  backdrop-filter: blur(12px);
+  padding: 2.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.thanks-info-card h3 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.thanks-presenters {
-  margin-top: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.thanks-presenters p {
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.thanks-links-group {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.repo-link-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 0.9rem;
+.closing-quote {
+  font-size: 1.25rem;
   font-weight: 600;
-  padding: 0.65rem 1.2rem;
+  font-style: italic;
+  color: #f1f5f9;
+  text-align: center;
+  padding: 1.25rem 1.75rem;
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.closing-takeaways-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.closing-point {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   transition: var(--transition-smooth);
 }
 
-.repo-link-btn.primary {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(16, 185, 129, 0.25));
+.closing-point:hover {
   border-color: var(--accent-cyan);
-  color: #f0fdf4;
+  transform: translateY(-3px);
 }
 
-.repo-link-btn.primary:hover {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(16, 185, 129, 0.4));
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+.point-icon {
+  font-size: 1.6rem;
 }
 
-.repo-link-btn:hover {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-  transform: translateY(-2px);
-}
-
-
-.qr-container-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-accent);
-  border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
-
-.qr-image-wrapper {
-  background: #ffffff;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  margin-bottom: 1.25rem;
-}
-
-.qr-code-img {
-  display: block;
-  width: 200px;
-  height: 200px;
-  border-radius: 4px;
-}
-
-.qr-caption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.qr-caption strong {
+.closing-point strong {
   font-size: 1.05rem;
   color: var(--text-primary);
 }
 
-.qr-caption span {
-  font-size: 0.85rem;
+.closing-point p {
+  font-size: 0.88rem;
   color: var(--text-secondary);
+  line-height: 1.5;
 }
 
-.qr-url {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+.thanks-presenters-box {
+  text-align: center;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.presenters-names {
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.1);
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  margin-top: 0.5rem;
-  display: inline-block;
+  margin: 0.35rem 0;
+}
+
+.meta-sub {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -1709,58 +1659,30 @@ kbd {
     padding: 0.75rem 0.85rem;
   }
 
-  /* Slide 6: Thanks & QR */
-  .thanks-grid {
+  /* Slide 6: Thanks & Closing */
+  .closing-summary-card {
+    padding: 1.5rem 1.15rem;
+    margin: 1rem auto 0;
+  }
+
+  .closing-quote {
+    font-size: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .closing-takeaways-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-top: 1rem;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
-  .thanks-info-card {
-    padding: 1.25rem 1rem;
-    border-radius: var(--radius-md);
+  .closing-point {
+    padding: 1rem;
   }
 
-  .thanks-info-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .thanks-presenters {
-    margin-top: 1rem;
-    padding-top: 0.75rem;
-  }
-
-  .thanks-presenters p {
-    font-size: 0.98rem;
-    margin-bottom: 0;
-  }
-
-  .qr-container-card {
-    padding: 1.5rem 1rem;
-    border-radius: var(--radius-md);
-  }
-
-  .qr-image-wrapper {
-    padding: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .qr-code-img {
-    width: 160px;
-    height: 160px;
-  }
-
-  .qr-caption strong {
-    font-size: 0.95rem;
-  }
-
-  .qr-caption span {
-    font-size: 0.78rem;
-  }
-
-  .qr-url {
-    font-size: 0.7rem;
+  .presenters-names {
+    font-size: 1.2rem;
   }
 
   /* Speaker Notes Modal on Mobile */
